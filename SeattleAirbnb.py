@@ -30,7 +30,7 @@ data = pd.read_csv('/content/listings.csv')
 # Print the first rows
 print(data.head())
 
-# features for the project
+# Features for the project
 proj_features = ['summary',
        'space', 'description', 'experiences_offered', 'neighborhood_overview',
        'notes', 'transit', 'host_response_time',
@@ -51,45 +51,63 @@ proj_features = ['summary',
        'cancellation_policy', 'calculated_host_listings_count',
        'reviews_per_month']
 
-# dataset for the project:
+# Dataset for the project:
 df = data[proj_features]
 print(df.shape)
 
-# deleting the columns with more than 50% missing values
+# Delete the columns with more than 50% missing values
 
 df = df[df.columns[df.isnull().sum() < .5*df.shape[0]]]
 
-#delete the rows if the neighbourhoods missing
+# Delete the rows if the neighbourhoods missing
 df = df = df.dropna(subset=['neighbourhood'])
 
 
 print(df.shape)
 
-# determining the categorical and numerical columns
+# Determine the categorical and numerical columns
 df.info()
 cat_vars = list(df.select_dtypes(include = 'object'))
 num_vars = list(df.select_dtypes(include = ['float64', 'int64']))
 print(num_vars)
 
-# delete the rows with missing numeric values
+# Delete the rows with missing numeric values
 df = df.dropna(subset = num_vars)
 
-# create mum_amenities column showing the number of amenities at home
+# Create mum_amenities column showing the number of amenities at home
 def count_amenities(amenities_str):
-  #remove curly braces and split by comma
-  amenities_list = amenities_str.strip('{}').split(',')
+    """
+    Count the number of amenities listed in a string.
 
-  # find the number of amenities
-  return len(amenities_list)
+    This function takes a string of amenities enclosed in curly braces and separated by commas,
+    removes the curly braces, splits the string by commas, and returns the count of amenities.
 
-#create a column with the number of amenities
+    Args:
+        amenities_str (str): A string containing a list of amenities enclosed in curly braces
+                             and separated by commas (e.g., "{WiFi, Heating, Kitchen}").
+
+    Returns:
+        int: The number of amenities in the list.
+
+    Example:
+        >>> count_amenities("{WiFi, Heating, Kitchen}")
+        3
+    """
+    # Remove curly braces and split by comma
+    amenities_list = amenities_str.strip('{}').split(',')
+
+    # Find the number of amenities
+    return len(amenities_list)
+
+
+# Create a column with the number of amenities
 df['num_amenities'] = df['amenities'].apply(count_amenities)
 
 """Question 1) What are the predictors of price?
 
 """
 
-# clean the 'price' column
+# Clean the 'price' column
 df['price'] = df['price'].replace('[\$,]', '', regex=True).astype(float)
 
 # Compute the correlation matrix
