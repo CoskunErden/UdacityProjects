@@ -1,6 +1,6 @@
 # Exploring Seattle's Airbnb Market: Insights from Linear Regression Analysis
 
-![Seattle Airbnb](docs/US_Seattle.jpg)
+![Seattle Airbnb](https://github.com/CoskunErden/UdacityProjects/tree/main/docs/US_Seattle.jpg)
 
 ## Introduction
 
