@@ -1,4 +1,4 @@
-# Exploring Seattle's Airbnb Market: Insights from Linear Regression Analysis
+# Unveiling Seattle's Airbnb Secrets: Price Predictors, Neighborhood Trends, and Property Insights
 
 ![Seattle Airbnb](https://github.com/CoskunErden/UdacityProjects/blob/main/docs/US_Seattle.jpg?raw=true)
 
