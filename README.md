@@ -54,5 +54,7 @@ A scatter plot was generated to analyze the impact of the number of accommodatio
 - The dataset used in this project is provided by [kaggle](https://www.kaggle.com/datasets/airbnb/seattle/data).
 - Special thanks to the Udacity Data Science program for providing the framework and guidance for this project.
 
-
+## Blog 
+You can access my blog on this project at the following link:
+- https://coskunerden.github.io/UdacityProjects/docs/blog
 
